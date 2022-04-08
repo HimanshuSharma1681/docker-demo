@@ -1,6 +1,6 @@
 pipeline{
   environment{
-     imagename = "28071989/docker-jenkins-project"
+     imageName = "28071989/docker-jenkins-project"
      registryCredential = 'dockerhub'
      dockerImage =''
   }
@@ -15,7 +15,7 @@ pipeline{
      stage('Building image') {
       steps{
         script {
-          dockerImage = docker.build imagename
+          dockerImage = docker.build imageName
         }
       }
     }
@@ -32,8 +32,8 @@ pipeline{
     }
     stage('Remove Unused docker image') {
       steps{
-        sh "docker rmi $imagename:$BUILD_NUMBER"
-         sh "docker rmi $imagename:latest"
+        sh "docker rmi $imageName:$BUILD_NUMBER"
+         sh "docker rmi $imageName:latest"
  
       }
     }
